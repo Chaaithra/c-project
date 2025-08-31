@@ -16,14 +16,18 @@ stages{
           }
 } 
 
-stage("Build Application"){
-    steps {
-        sh "mvn clean package"
+  stage("Build Application"){
+            steps {
+            dir('c-project') {  // Adjust this path based on your repo structure
+            sh "mvn clean package"
+        }
     }
 }
 stage("Test Application"){
     steps {
+          dir('c-project') {  // Same directory as the POM file
           sh "mvn test"
+          }
     }
   }
 }
