@@ -17,11 +17,9 @@ stages{
 } 
 stage('Build Application') {
     steps {
-        dir('c-project') {
-            sh 'mvn clean package'
+            sh "mvn clean package"
         }
     }
-}
       stage("Test Applicatiom"){ 
               steps {
                     sh "mvn test" 
