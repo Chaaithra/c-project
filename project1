@@ -12,24 +12,21 @@ stages{
     } 
   stage("Checkout from SCM"){ 
             steps { 
-            git branch: 'main' , credentialsId: 'github' , url: 'https://github.com/chaaithra/c-project'
+            git branch: 'main' , credentialsId: 'github' , url: 'https://github.com/Chaaithra/c-project.git'
           }
 } 
 
   stage("Build Application"){
             steps {
-            dir('c-project') {  // Adjust this path based on your repo structure
             sh "mvn clean package"
         }
-    }
 }
 stage("Test Application"){
     steps {
-          dir('c-project') {  // Same directory as the POM file
           sh "mvn test"
-          }
+            }
+        }
     }
-  }
 }
-}
+
 
