@@ -16,9 +16,11 @@ stages{
           }
 } 
 
-stage("Build Application"){
-    steps {
-            sh "maven clean package"
+    stages {
+        stage("Build Application") {
+            steps {
+                sh 'mvn clean package'
+              }
         }
     }
       stage("Test Applicatiom"){ 
