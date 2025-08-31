@@ -1,5 +1,4 @@
 pipeline { 
-set -X
   agent { label 'project1agent' } 
   tools { 
     jdk 'java17'     // ✅ Must match the name configured in Jenkins
