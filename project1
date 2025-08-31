@@ -1,37 +1,24 @@
-pipeline {
-    agent { label 'project1agent' }
+pipeline { 
+agent { label 'project1agent' } 
+tools { 
+jdk 'java17' 
+maven 'maven3'
+}
 
-    tools {
-        jdk 'java17'
-        maven 'maven'
-    }
-
-    stages {
-
-        stage("Cleanup Workspace") {
-            steps {
-                cleanWs() 
-            }
-        }
-
-        stage("Checkout from SCM") {
-            steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/chaaithra/c-project'
-               
-            }
-        }
-
-        stage("Build Application") {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage("Test Application") {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-    }
+stages{
+stage("Cleanup Workspace"){ 
+steps { 
+cleanWS()
+} 
+} 
+stage("checkout from SCM"){ 
+steps{ git branch: 'main' , credentialsID: 'github' , 'https://github.com/chaaithra/c-project' }
+} 
+stage("Build Application"){ 
+steps{ sh "mvn clean package" }
+} 
+stage("Test Applicatiom"){ 
+steps { sh "mvn test" }
+} 
+} 
 }
