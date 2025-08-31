@@ -16,14 +16,16 @@ stages{
           }
 } 
 
-   stage("Build Application"){
-            steps { 
-            sh "mvn clean package"
+    stages {
+        stage("Build Application") {
+            steps {
+                sh 'make'
+            }
         }
-    }
-      stage("Test Applicatiom"){ 
-              steps {
-                    sh "mvn test" 
+
+        stage("Test Application") {
+            steps {
+                sh 'make test' // or './your_test_binary'
             }
         } 
     } 
