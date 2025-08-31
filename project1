@@ -16,9 +16,12 @@ stages{
           }
 } 
 
-  stage("Build Application"){
-            steps {
-            sh "mvn clean package"
+  stages {
+    stage('Checkout') { steps { checkout scm } }
+    stage('Build') {
+      steps {
+        sh 'make'
+            }
         }
 }
 stage("Test Application"){
