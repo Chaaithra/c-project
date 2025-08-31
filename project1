@@ -15,11 +15,13 @@ stages{
             git branch: 'main' , credentialsId: 'github' , url: 'https://github.com/chaaithra/c-project'
           }
 } 
-    stage("Build Application"){ 
-            steps { 
-            sh "mvn clean package" 
-          }
-} 
+stage('Build Application') {
+    steps {
+        dir('c-project') {
+            sh 'mvn clean package'
+        }
+    }
+}
       stage("Test Applicatiom"){ 
               steps {
                     sh "mvn test" 
