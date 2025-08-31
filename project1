@@ -16,17 +16,16 @@ stages{
           }
 } 
 
-    stages{
-        stage("Build Application"){
+    stages {
+        stage("Build Application") {
             steps {
                 sh 'make'
-                  }
             }
         }
 
-        stage("Test Application"){
+        stage("Test Application") {
             steps {
-                sh 'make test' // or './your_test_binary'
+                sh 'make test' // Or replace with: ./myapp or any other test command
             }
         } 
     } 
