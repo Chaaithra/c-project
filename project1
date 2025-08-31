@@ -16,17 +16,16 @@ stages{
           }
 } 
 
-    stages {
-        stage("Build Application") {
-            steps {
-                sh 'make'
-            }
-        }
-
-        stage("Test Application") {
-            steps {
-                sh 'make test' // Or replace with: ./myapp or any other test command
-            }
-        } 
-    } 
+stage("Build Application"){
+    steps {
+        sh "mvn clean package"
+    }
 }
+stage("Test Application"){
+    steps {
+          sh "mvn test"
+    }
+  }
+}
+}
+
